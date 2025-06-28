@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
+import RaceInput from './components/RaceInput';
+import RaceTable from './components/RaceTable';
+import RaceChart from './components/RaceChart';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route 
+          path="/dashboard"
+          element={<PrivateRoute><Dashboard /></PrivateRoute>}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route path="input" element={<RaceInput />} />
+          <Route path="table" element={<RaceTable />} />
+          <Route path="chart" element={<RaceChart />} />
+        </Route>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
