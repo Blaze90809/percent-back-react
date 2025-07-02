@@ -7,6 +7,8 @@ import PrivateRoute from './components/PrivateRoute';
 import RaceInput from './components/RaceInput';
 import RaceTable from './components/RaceTable';
 import RaceChart from './components/RaceChart';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route 
           path="/dashboard"
           element={<PrivateRoute><Dashboard /></PrivateRoute>}
