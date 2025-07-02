@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
-import { TextField, Button, Container, Typography, Box, Card, CardContent, Link } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Card, CardContent, Link, Grid } from '@mui/material';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ const Login = () => {
     try {
       const response = await axios.post('/login', { username: email, password });
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard/input');
+      navigate('/dashboard');
     } catch (err) {
       setError('Invalid email or password');
     }
@@ -62,9 +62,18 @@ const Login = () => {
               >
                 Sign In
               </Button>
-              <Link component={RouterLink} to="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <Grid container>
+                <Grid item xs>
+                  <Link component={RouterLink} to="/forgot-password" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link component={RouterLink} to="/register" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
             </Box>
           </CardContent>
         </Card>
