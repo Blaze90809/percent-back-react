@@ -21,7 +21,7 @@ const Register = () => {
       return;
     }
     try {
-      await axios.post('/register', { username: email, password });
+      await axios.post('/api/register', { username: email, password });
       navigate('/login');
     } catch (err) {
       setError('Failed to register. Please try a different email.');

@@ -15,7 +15,7 @@ const RaceChart = () => {
     const fetchRaces = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('/races', { headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get('/api/races', { headers: { Authorization: `Bearer ${token}` } });
         const races = response.data || [];
         const sortedRaces = races.sort((a, b) => new Date(a.RaceDate) - new Date(b.RaceDate));
         setOriginalRaces(sortedRaces);
