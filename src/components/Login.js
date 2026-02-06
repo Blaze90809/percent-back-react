@@ -12,9 +12,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/login', { username: email, password });
+      const response = await axios.post('/api/login', { username: email, password });
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      navigate('/dashboard/input');
     } catch (err) {
       setError('Invalid email or password');
     }
@@ -62,7 +62,7 @@ const Login = () => {
               >
                 Sign In
               </Button>
-              <Grid container>
+              <Grid container justifyContent="space-between">
                 <Grid item xs>
                   <Link component={RouterLink} to="/forgot-password" variant="body2">
                     Forgot password?

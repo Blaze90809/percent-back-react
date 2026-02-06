@@ -42,7 +42,7 @@ const RaceInput = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('/races/create', 
+      await axios.post('/api/races/create', 
         { 
           raceName,
           raceDate,

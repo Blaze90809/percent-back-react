@@ -10,7 +10,7 @@ const RaceTable = () => {
   const fetchRaces = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('/races', { headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.get('/api/races', { headers: { Authorization: `Bearer ${token}` } });
       const sortedRaces = response.data.sort((a, b) => new Date(b.RaceDate) - new Date(a.RaceDate));
       setRaces(sortedRaces);
     } catch (err) {
@@ -25,7 +25,7 @@ const RaceTable = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/races/delete/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.delete(`/api/races/delete/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       setRaces(races.filter(race => race.ID !== id));
     } catch (err) {
       setError('Failed to delete race');
